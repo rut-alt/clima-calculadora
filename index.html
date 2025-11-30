@@ -2,6 +2,76 @@
 <script src="calculadora.js" defer></script>
 
 <div id="calc-container">
-    <!-- Aquí va la estructura HTML de la calculadora -->
-    <!-- Yo te lo dejo limpio si quieres cuando confirmes este método -->
+
+    <div id="calc-progress">
+        <div id="calc-progress-bar"></div>
+    </div>
+
+    <!-- PASO 1 -->
+    <div class="calc-step active" data-step="1">
+        <h2 class="calc-title">¿Qué tipo de climatización necesitas?</h2>
+
+        <button class="calc-btn" onclick="saveAnswer('tipo','split'); nextStep()">Aire acondicionado Split</button>
+        <button class="calc-btn" onclick="saveAnswer('tipo','aerotermia'); nextStep()">Aerotermia</button>
+        <button class="calc-btn" onclick="saveAnswer('tipo','conductos'); nextStep()">Conductos</button>
+        <button class="calc-btn" onclick="saveAnswer('tipo','completa'); nextStep()">Climatización completa</button>
+    </div>
+
+    <!-- PASO 2 -->
+    <div class="calc-step" data-step="2">
+        <h2 class="calc-title">¿Cuántos metros cuadrados?</h2>
+
+        <button class="calc-btn" onclick="saveAnswer('metros','25'); nextStep()">< 25 m²</button>
+        <button class="calc-btn" onclick="saveAnswer('metros','40'); nextStep()">25–40 m²</button>
+        <button class="calc-btn" onclick="saveAnswer('metros','60'); nextStep()">40–60 m²</button>
+        <button class="calc-btn" onclick="saveAnswer('metros','70'); nextStep()">Más de 60 m²</button>
+    </div>
+
+    <!-- PASO 3 -->
+    <div class="calc-step" data-step="3">
+        <h2 class="calc-title">Nivel de calidad deseado</h2>
+
+        <button class="calc-btn" onclick="saveAnswer('calidad','economico'); nextStep()">💸 Económico</button>
+        <button class="calc-btn" onclick="saveAnswer('calidad','medio'); nextStep()">⚖️ Calidad–precio</button>
+        <button class="calc-btn" onclick="saveAnswer('calidad','premium'); nextStep()">⭐ Premium</button>
+    </div>
+
+    <!-- PASO 4 -->
+    <div class="calc-step" data-step="4">
+        <h2 class="calc-title">¿Tienes preinstalación?</h2>
+
+        <button class="calc-btn" onclick="saveAnswer('preinstal','si'); nextStep()">Sí</button>
+        <button class="calc-btn" onclick="saveAnswer('preinstal','no'); nextStep()">No</button>
+        <button class="calc-btn" onclick="saveAnswer('preinstal','ns'); nextStep()">No lo sé</button>
+    </div>
+
+    <!-- PASO 5 -->
+    <div class="calc-step" data-step="5">
+        <h2 class="calc-title">¿Quieres WiFi?</h2>
+
+        <button class="calc-btn" onclick="saveAnswer('wifi','si'); nextStep()">Sí</button>
+        <button class="calc-btn" onclick="saveAnswer('wifi','no'); nextStep()">No</button>
+    </div>
+
+    <!-- PASO 6 -->
+    <div class="calc-step" data-step="6">
+        <h2 class="calc-title">Dificultad de instalación</h2>
+
+        <button class="calc-btn" onclick="saveAnswer('dificultad','facil'); nextStep()">Instalación fácil</button>
+        <button class="calc-btn" onclick="saveAnswer('dificultad','media'); nextStep()">Algo complicada</button>
+        <button class="calc-btn" onclick="saveAnswer('dificultad','dificil'); nextStep()">Muy complicada</button>
+    </div>
+
+    <!-- PASO FINAL -->
+    <div class="calc-step" data-step="7">
+        <h2 class="calc-title">Tu recomendación</h2>
+
+        <div class="result-box" id="result-content">
+            <!-- Se rellenará con JS -->
+        </div>
+
+        <button class="calc-btn" onclick="window.location.href='https://wa.me/34XXXXXXXXX'">Recibir exacto por WhatsApp</button>
+        <button class="calc-btn calc-btn-secondary" onclick="window.location.href='/contacto'">Llamarme ahora</button>
+    </div>
+
 </div>
