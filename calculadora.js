@@ -17,15 +17,22 @@
   };
 
   // placeholder mockup images
-  const images = {
-    'Midea Basic 2.5 kW': 'https://ingnexclima.com/wp-content/uploads/2025/10/split-1x1_ix75-6f75c8.webp,
-    'Hisense Comfort 3.5 kW': 'https://ingnexclima.com/wp-content/uploads/2025/04/aire-acondicionado-daikin-multisplit-2x1-sensira-3mxf52f1-1.png',
-    'Daikin Sensira 3.5 kW': 'https://ingnexclima.com/wp-content/uploads/2025/04/aire-acondicionado-daikin-multisplit-2x1-sensira-3mxf52f1-1.png',
-    'Conductos Mitsubishi 7.1 kW': 'https://ingnexclima.com/wp-content/uploads/2025/04/Picture7.png',
-    'Aerotermia Panasonic Aquarea 6 kW': 'https://ingnexclima.com/wp-content/uploads/2025/04/Picture7.png',
-    'Sistema completo Daikin Altherma': 'https://ingnexclima.com/wp-content/uploads/2025/10/split-1x1_ix75-6f75c8.webp,
-    'default': 'https://ingnexclima.com/wp-content/uploads/2025/10/split-1x1_ix75-6f75c8.webp
-  };
+const images = {
+  'Midea Basic 2.5 kW': 'https://ingnexclima.com/wp-content/uploads/2025/10/split-1x1_ix75-6f75c8.webp',
+
+  'Hisense Comfort 3.5 kW': 'https://ingnexclima.com/wp-content/uploads/2025/04/aire-acondicionado-daikin-multisplit-2x1-sensira-3mxf52f1-1.png',
+
+  'Daikin Sensira 3.5 kW': 'https://ingnexclima.com/wp-content/uploads/2025/04/aire-acondicionado-daikin-multisplit-2x1-sensira-3mxf52f1-1.png',
+
+  'Conductos Mitsubishi 7.1 kW': 'https://ingnexclima.com/wp-content/uploads/2025/04/Picture7.png',
+
+  'Aerotermia Panasonic Aquarea 6 kW': 'https://ingnexclima.com/wp-content/uploads/2025/04/Picture7.png',
+
+  'Sistema completo Daikin Altherma': 'https://ingnexclima.com/wp-content/uploads/2025/10/split-1x1_ix75-6f75c8.webp',
+
+  'default': 'https://ingnexclima.com/wp-content/uploads/2025/10/split-1x1_ix75-6f75c8.webp'
+};
+
 
   // helpers
   const el = (s) => document.querySelector(s);
