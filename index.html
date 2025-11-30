@@ -1,190 +1,11 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calculadora Climatización — INGNEXCLIMA</title>
 
-  <style>
-  /* Reset y tipografía */
-  * { box-sizing: border-box; }
-  html,body {
-    height:100%;
-    margin:0;
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg,#01184b 0%, #000a23 100%);
-    color:#fff;
-  }
-
-  /* HERO */
-  .hero { padding:36px 20px; text-align:center; }
-  .hero-inner { max-width:980px; margin:0 auto; }
-  .hero h1 { margin:0; font-size:1.9rem; letter-spacing:0.2px; color:#fff; }
-  .hero .subtitle { margin-top:8px; color:rgba(255,255,255,0.85); }
-
-  /* WRAPPER */
-  .calc-wrapper { display:flex; justify-content:center; padding:20px 20px 80px; }
-  .calc { width:100%; max-width:920px; }
-
-  /* PROGRESS */
-  .progress {
-    width:100%; height:10px;
-    background:rgba(255,255,255,0.06);
-    border-radius:999px;
-    overflow:hidden;
-    margin-bottom:20px;
-  }
-  .progress-bar {
-    width:0%; height:100%;
-    background: linear-gradient(90deg,#01184b,#fb9206);
-    transition: width .45s cubic-bezier(.2,.9,.3,1);
-  }
-
-  /* STEP */
-  .step {
-    display:none;
-    background: rgba(255,255,255,0.04);
-    padding:34px;
-    border-radius:16px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.45);
-    animation: fadeIn .45s ease;
-  }
-  .step.active { display:block; }
-
-  @keyframes fadeIn {
-    from { opacity:0; transform: translateY(12px); }
-    to { opacity:1; transform: translateY(0); }
-  }
-
-  .step-title {
-    font-size:1.6rem;
-    font-weight:600;
-    text-align:center;
-    margin-bottom:22px;
-    color: #fff;
-  }
-
-  /* OPTIONS */
-  .options {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:14px;
-    margin-bottom:18px;
-  }
-  .option-btn {
-    padding:18px;
-    font-size:16px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.10);
-    color:#fff;
-    border-radius:12px;
-    cursor:pointer;
-    transition: transform .22s ease, box-shadow .22s ease, border-color .22s;
-    text-align:center;
-  }
-  .option-btn:hover {
-    transform:translateY(-6px);
-    box-shadow:0 18px 40px rgba(0,0,0,0.6);
-    border-color:rgba(255,255,255,0.28);
-  }
-  .option-btn.active {
-    background: linear-gradient(180deg, #01184b, #fb9206);
-    color:#fff;
-    border:none;
-    box-shadow:0 12px 30px rgba(1,24,75,0.45);
-  }
-
-  /* NAV */
-  .nav-row {
-    display:flex;
-    justify-content:space-between;
-    margin-top:20px;
-    gap:12px;
-  }
-  .btn-secondary {
-    padding:12px 18px;
-    background:transparent;
-    color:#fff;
-    border:1px solid rgba(255,255,255,0.12);
-    border-radius:10px;
-    cursor:pointer;
-  }
-  .btn-next {
-    padding:12px 22px;
-    background: linear-gradient(90deg,#01184b,#fb9206);
-    border:none;
-    color:#fff;
-    font-weight:600;
-    border-radius:10px;
-    cursor:pointer;
-    box-shadow:0 10px 30px rgba(0,0,0,0.45);
-  }
-  .btn-next[disabled] { opacity:0.5; cursor:not-allowed; }
-
-  /* RESULT CARD */
-  .result-card {
-    display:flex;
-    gap:24px;
-    background:linear-gradient(180deg,#ffffff,#f5f5f5);
-    color:#000;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 22px 60px rgba(0,0,0,0.45);
-  }
-  .result-left { width:45%; display:flex; justify-content:center; }
-  .result-image {
-    background:#fff;
-    padding:18px;
-    border-radius:12px;
-    box-shadow:0 16px 40px rgba(0,0,0,0.22);
-    width:100%;
-    max-width:360px;
-  }
-  .result-image img { width:100%; border-radius:8px; display:block; }
-
-  .result-right { width:55%; }
-  .result-right h2 { margin:0 0 10px; color:#111; }
-  .result-details { padding:8px 0; color:#222; }
-  .result-details .line { margin-bottom:8px; }
-
-  .result-cta { display:flex; gap:12px; margin-top:20px; }
-  #wa-btn, .btn-contact {
-    background:#01184b;
-    padding:14px 18px;
-    color:#fff;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:600;
-  }
-  #wa-btn:hover, .btn-contact:hover { background:#fb9206; color:#01184b; }
-
-  /* LEAD FORM */
-  .lead-capture {
-    margin-top:20px;
-    background:rgba(255,255,255,0.04);
-    padding:18px;
-    border-radius:12px;
-  }
-  .lead-capture input {
-    width:100%;
-    padding:12px;
-    margin-bottom:12px;
-    background:rgba(255,255,255,0.06);
-    border:none;
-    border-radius:8px;
-    color:#fff;
-  }
-  .lead-feedback { margin-top:10px; color:#9ff0b3; }
-
-  footer.powered { text-align:center; margin:40px 0; opacity:0.6; color:rgba(255,255,255,0.7); }
-
-  @media (max-width:900px) {
-    .result-card { flex-direction:column; }
-    .result-left, .result-right { width:100%; }
-  }
-
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -192,14 +13,15 @@
 <main>
   <header class="hero">
     <div class="hero-inner">
-      <h1>Calculadora de presupuesto — INGNEXCLIMA</h1>
-      <p class="subtitle">En 6 pasos obtendrás una recomendación técnica adaptada a tu vivienda.</p>
+      <h1>Calculadora de presupuesto</h1>
+      <p class="subtitle">En 6 pasos obtienes una recomendación técnica real.</p>
     </div>
   </header>
 
   <section class="calc-wrapper">
     <div class="calc">
 
+      <!-- Barra progreso -->
       <div class="progress">
         <div id="calc-progress-bar" class="progress-bar"></div>
       </div>
@@ -272,7 +94,7 @@
 
       <!-- STEP 5 -->
       <div class="step" data-step="5">
-        <h2 class="step-title">¿Quieres WiFi?</h2>
+        <h2 class="step-title">¿Quieres WiFi en el equipo?</h2>
 
         <div class="options">
           <button class="option-btn" data-value="si">Sí</button>
@@ -291,8 +113,8 @@
 
         <div class="options">
           <button class="option-btn" data-value="facil">Fácil</button>
-          <button class="option-btn" data-value="media">Algo complicada</button>
-          <button class="option-btn" data-value="dificil">Muy complicada</button>
+          <button class="option-btn" data-value="media">Media</button>
+          <button class="option-btn" data-value="dificil">Difícil</button>
         </div>
 
         <div class="nav-row">
@@ -301,41 +123,40 @@
         </div>
       </div>
 
-      <!-- STEP 7 — RESULTADO -->
+      <!-- RESULTADO -->
       <div class="step" data-step="7">
-        <h2 class="step-title">Tu recomendación personalizada</h2>
+        <h2 class="step-title">Recomendación personalizada</h2>
 
         <div class="result-card">
           <div class="result-left">
             <div class="result-image" id="result-image">
-              <img src="" alt="Equipo recomendado">
+              <img src="" alt="">
             </div>
           </div>
 
           <div class="result-right">
             <h2>Resumen</h2>
-            <div class="result-details" id="result-details"></div>
+            <div id="result-details" class="result-details"></div>
 
             <div class="result-cta">
               <a id="wa-btn" href="#" class="btn-contact">WhatsApp</a>
               <a href="/contacto" class="btn-contact">Llamarme</a>
             </div>
-
           </div>
         </div>
 
         <div class="lead-capture">
-          <h3>¿Quieres presupuesto exacto?</h3>
+          <h3>¿Quieres el presupuesto exacto?</h3>
           <form id="lead-form">
             <input id="lead-name" type="text" placeholder="Tu nombre" required>
             <input id="lead-phone" type="tel" placeholder="Tu teléfono" required>
-            <input id="lead-email" type="email" placeholder="Tu email (opcional)">
-            <button class="btn-contact" type="submit" style="margin-top:10px;">Enviar</button>
+            <input id="lead-email" type="email" placeholder="Email (opcional)">
+            <button type="submit">Enviar</button>
             <div class="lead-feedback"></div>
           </form>
         </div>
 
-        <div class="nav-row" style="margin-top:18px;">
+        <div class="nav-row">
           <button class="btn-secondary" id="edit-answers">Editar respuestas</button>
         </div>
       </div>
@@ -346,215 +167,6 @@
   <footer class="powered">Powered by INGNEXCLIMA</footer>
 </main>
 
-<!-- JS incrustado: copia limpio si prefieres archivo externo -->
-<script>
-/* calculadora.js - versión incrustada (limpia, sin Brevo) */
-(() => {
-
-  // state
-  const state = {
-    step: 1,
-    answers: {},
-    recommendation: {}
-  };
-
-  // pricing (mock)
-  const pricing = {
-    split: { '2.5': 450, '3.5': 650, '5.0': 950, '2equipos': 1700 },
-    conductos: { default: 1400 },
-    aerotermia: { small: 4200, medium: 6800 },
-    completa: { default: 9500 }
-  };
-
-  // images (tus URLs)
-  const images = {
-    "Midea Basic 2.5 kW": "https://ingnexclima.com/wp-content/uploads/2025/10/split-1x1_ix75-6f75c8.webp",
-    "Hisense Comfort 3.5 kW": "https://ingnexclima.com/wp-content/uploads/2025/04/aire-acondicionado-daikin-multisplit-2x1-sensira-3mxf52f1-1.png",
-    "Daikin Sensira 3.5 kW": "https://ingnexclima.com/wp-content/uploads/2025/04/aire-acondicionado-daikin-multisplit-2x1-sensira-3mxf52f1-1.png",
-    "Conductos Mitsubishi 7.1 kW": "https://ingnexclima.com/wp-content/uploads/2025/04/Picture7.png",
-    "Aerotermia Panasonic Aquarea 6 kW": "https://ingnexclima.com/wp-content/uploads/2025/04/Picture7.png",
-    "Sistema completo Daikin Altherma": "https://ingnexclima.com/wp-content/uploads/2025/10/split-1x1_ix75-6f75c8.webp",
-    "default": "https://ingnexclima.com/wp-content/uploads/2025/10/split-1x1_ix75-6f75c8.webp"
-  };
-
-  // helpers
-  const el = s => document.querySelector(s);
-  const els = s => Array.from(document.querySelectorAll(s));
-
-  document.addEventListener('DOMContentLoaded', init);
-
-  function init() {
-    setupOptions();
-    setupNav();
-    setupLeadForm();
-    updateProgress();
-  }
-
-  function setupOptions() {
-    els('.option-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const parentStep = btn.closest('.step').dataset.step;
-
-        // toggle active in group
-        btn.closest('.options').querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // enable next
-        const nextBtn = document.querySelector(`.step[data-step="${parentStep}"] .btn-next`);
-        if (nextBtn) nextBtn.disabled = false;
-
-        // save answer
-        const val = btn.dataset.value;
-        switch (parentStep) {
-          case '1': state.answers.tipo = val; break;
-          case '2': state.answers.metros = val; break;
-          case '3': state.answers.calidad = val; break;
-          case '4': state.answers.preinstal = val; break;
-          case '5': state.answers.wifi = val; break;
-          case '6': state.answers.dificultad = val; break;
-        }
-      });
-    });
-  }
-
-  function setupNav() {
-    els('.btn-next').forEach(btn => btn.addEventListener('click', nextStep));
-    els('.btn-back').forEach(btn => btn.addEventListener('click', prevStep));
-
-    el('#edit-answers')?.addEventListener('click', () => {
-      goToStep(1);
-      window.scrollTo({top:0, behavior:'smooth'});
-    });
-  }
-
-  function nextStep() {
-    if (state.step >= 7) return;
-    const current = state.step;
-    const stepEl = document.querySelector(`.step[data-step="${current}"]`);
-    const nextBtn = stepEl.querySelector('.btn-next');
-    if (nextBtn && nextBtn.disabled) return;
-    goToStep(current + 1);
-    if (state.step === 7) generateResult();
-  }
-
-  function prevStep() {
-    if (state.step <= 1) return;
-    goToStep(state.step - 1);
-  }
-
-  function goToStep(n) {
-    document.querySelector(`.step[data-step="${state.step}"]`).classList.remove('active');
-    state.step = n;
-    document.querySelector(`.step[data-step="${state.step}"]`).classList.add('active');
-    updateProgress();
-    els('.btn-back').forEach(b => b.disabled = (state.step === 1));
-    const nextBtn = document.querySelector(`.step[data-step="${state.step}"] .btn-next`);
-    if (nextBtn) {
-      const chosen = document.querySelector(`.step[data-step="${state.step}"] .option-btn.active`);
-      nextBtn.disabled = !chosen;
-    }
-  }
-
-  function updateProgress() {
-    const p = Math.round(((state.step - 1) / 6) * 100);
-    el('#calc-progress-bar').style.width = p + '%';
-  }
-
-  function generateResult() {
-    const tipo = state.answers.tipo || 'split';
-    const metrosVal = parseInt(state.answers.metros || '40', 10);
-    const calidad = state.answers.calidad || 'medio';
-    const wifi = state.answers.wifi || 'no';
-    const preinstal = state.answers.preinstal || 'no';
-    const dificultad = state.answers.dificultad || 'facil';
-
-    let potencia = '2.5 kW';
-    if (metrosVal <= 25) potencia = '2.5 kW';
-    else if (metrosVal <= 40) potencia = '3.5 kW';
-    else if (metrosVal <= 60) potencia = '5.0 kW';
-    else potencia = '2 equipos recomendados';
-
-    let equipo = 'Equipo no definido';
-    if (tipo === 'split') {
-      if (calidad === 'economico') equipo = `Midea Basic ${potencia}`;
-      if (calidad === 'medio') equipo = `Hisense Comfort ${potencia}`;
-      if (calidad === 'premium') equipo = `Daikin Sensira ${potencia}`;
-    } else if (tipo === 'conductos') {
-      equipo = 'Conductos Mitsubishi 7.1 kW';
-    } else if (tipo === 'aerotermia') {
-      equipo = 'Aerotermia Panasonic Aquarea 6 kW';
-    } else if (tipo === 'completa') {
-      equipo = 'Sistema completo Daikin Altherma';
-    }
-
-    let basePrice = 800;
-    if (tipo === 'split') {
-      if (potencia.includes('2.5')) basePrice = pricing.split['2.5'];
-      else if (potencia.includes('3.5')) basePrice = pricing.split['3.5'];
-      else if (potencia.includes('5.0')) basePrice = pricing.split['5.0'];
-      else basePrice = pricing.split['2equipos'];
-    } else if (tipo === 'conductos') basePrice = pricing.conductos.default;
-    else if (tipo === 'aerotermia') basePrice = pricing.aerotermia.small;
-    else if (tipo === 'completa') basePrice = pricing.completa.default;
-
-    let installCost = 250;
-    if (preinstal === 'si') installCost -= 180;
-    if (dificultad === 'media') installCost += 120;
-    if (dificultad === 'dificil') installCost += 250;
-    if (wifi === 'si') basePrice += 40;
-
-    let mult = 1;
-    if (calidad === 'economico') mult = 0.92;
-    if (calidad === 'premium') mult = 1.35;
-
-    const finalPrice = Math.round((basePrice * mult) + installCost);
-    const minPrice = Math.round(finalPrice * 0.88);
-    const maxPrice = Math.round(finalPrice * 1.18);
-
-    const imgSrc = images[equipo] || images.default;
-    el('#result-image img').src = imgSrc;
-
-    el('#result-details').innerHTML = `
-      <div class="line"><strong>Equipo recomendado:</strong> ${equipo}</div>
-      <div class="line"><strong>Potencia ideal:</strong> ${potencia}</div>
-      <div class="line"><strong>Instalación:</strong> ${dificultad}</div>
-      <div class="line"><strong>Preinstalación:</strong> ${preinstal}</div>
-      <div class="line"><strong>WiFi:</strong> ${wifi}</div>
-      <div class="line"><strong>Presupuesto orientativo:</strong> ${minPrice}€ – ${maxPrice}€</div>
-    `;
-
-    const phone = "34XXXXXXXXX"; // reemplaza por tu número real (sin +)
-    const msg = encodeURIComponent(
-      `Hola, vengo de la calculadora.\nEquipo: ${equipo}\nPotencia: ${potencia}\nPresupuesto orientativo: ${minPrice}€ - ${maxPrice}€`
-    );
-    el('#wa-btn').href = `https://wa.me/${phone}?text=${msg}`;
-
-    state.recommendation = { equipo, potencia, minPrice, maxPrice, imgSrc };
-  }
-
-  function setupLeadForm() {
-    const form = el('#lead-form');
-    if (!form) return;
-    form.addEventListener('submit', (ev) => {
-      ev.preventDefault();
-      const name = el('#lead-name').value.trim();
-      const phone = el('#lead-phone').value.trim();
-      const email = el('#lead-email').value.trim();
-      if (!name || !phone) {
-        el('.lead-feedback').textContent = 'Por favor, introduce nombre y teléfono.';
-        return;
-      }
-      const lead = { name, phone, email, recommendation: state.recommendation, date: new Date().toISOString() };
-      const leads = JSON.parse(localStorage.getItem('ingnex_leads') || '[]');
-      leads.push(lead);
-      localStorage.setItem('ingnex_leads', JSON.stringify(leads));
-      el('.lead-feedback').textContent = 'Datos recibidos. Te contactaremos.';
-      form.reset();
-    });
-  }
-
-})();
-</script>
-
+<script src="calculadora.js"></script>
 </body>
 </html>
