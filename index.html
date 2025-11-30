@@ -1,77 +1,160 @@
-<link rel="stylesheet" href="styles.css">
-<script src="calculadora.js" defer></script>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calculadora Climatización — INGNEXCLIMA</title>
 
-<div id="calc-container">
+  <link rel="stylesheet" href="styles.css">
+  <script src="calculadora.js" defer></script>
+</head>
+<body>
 
-    <div id="calc-progress">
-        <div id="calc-progress-bar"></div>
-    </div>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-inner">
+        <h1>Calculadora de presupuesto — INGNEXCLIMA</h1>
+        <p class="subtitle">Rápida, personalizada y profesional. En 6 preguntas te damos una recomendación.</p>
+      </div>
+    </header>
 
-    <!-- PASO 1 -->
-    <div class="calc-step active" data-step="1">
-        <h2 class="calc-title">¿Qué tipo de climatización necesitas?</h2>
+    <section id="calc-wrapper" class="calc-wrapper">
+      <div id="calc" class="calc">
 
-        <button class="calc-btn" onclick="saveAnswer('tipo','split'); nextStep()">Aire acondicionado Split</button>
-        <button class="calc-btn" onclick="saveAnswer('tipo','aerotermia'); nextStep()">Aerotermia</button>
-        <button class="calc-btn" onclick="saveAnswer('tipo','conductos'); nextStep()">Conductos</button>
-        <button class="calc-btn" onclick="saveAnswer('tipo','completa'); nextStep()">Climatización completa</button>
-    </div>
-
-    <!-- PASO 2 -->
-    <div class="calc-step" data-step="2">
-        <h2 class="calc-title">¿Cuántos metros cuadrados?</h2>
-
-        <button class="calc-btn" onclick="saveAnswer('metros','25'); nextStep()">< 25 m²</button>
-        <button class="calc-btn" onclick="saveAnswer('metros','40'); nextStep()">25–40 m²</button>
-        <button class="calc-btn" onclick="saveAnswer('metros','60'); nextStep()">40–60 m²</button>
-        <button class="calc-btn" onclick="saveAnswer('metros','70'); nextStep()">Más de 60 m²</button>
-    </div>
-
-    <!-- PASO 3 -->
-    <div class="calc-step" data-step="3">
-        <h2 class="calc-title">Nivel de calidad deseado</h2>
-
-        <button class="calc-btn" onclick="saveAnswer('calidad','economico'); nextStep()">💸 Económico</button>
-        <button class="calc-btn" onclick="saveAnswer('calidad','medio'); nextStep()">⚖️ Calidad–precio</button>
-        <button class="calc-btn" onclick="saveAnswer('calidad','premium'); nextStep()">⭐ Premium</button>
-    </div>
-
-    <!-- PASO 4 -->
-    <div class="calc-step" data-step="4">
-        <h2 class="calc-title">¿Tienes preinstalación?</h2>
-
-        <button class="calc-btn" onclick="saveAnswer('preinstal','si'); nextStep()">Sí</button>
-        <button class="calc-btn" onclick="saveAnswer('preinstal','no'); nextStep()">No</button>
-        <button class="calc-btn" onclick="saveAnswer('preinstal','ns'); nextStep()">No lo sé</button>
-    </div>
-
-    <!-- PASO 5 -->
-    <div class="calc-step" data-step="5">
-        <h2 class="calc-title">¿Quieres WiFi?</h2>
-
-        <button class="calc-btn" onclick="saveAnswer('wifi','si'); nextStep()">Sí</button>
-        <button class="calc-btn" onclick="saveAnswer('wifi','no'); nextStep()">No</button>
-    </div>
-
-    <!-- PASO 6 -->
-    <div class="calc-step" data-step="6">
-        <h2 class="calc-title">Dificultad de instalación</h2>
-
-        <button class="calc-btn" onclick="saveAnswer('dificultad','facil'); nextStep()">Instalación fácil</button>
-        <button class="calc-btn" onclick="saveAnswer('dificultad','media'); nextStep()">Algo complicada</button>
-        <button class="calc-btn" onclick="saveAnswer('dificultad','dificil'); nextStep()">Muy complicada</button>
-    </div>
-
-    <!-- PASO FINAL -->
-    <div class="calc-step" data-step="7">
-        <h2 class="calc-title">Tu recomendación</h2>
-
-        <div class="result-box" id="result-content">
-            <!-- Se rellenará con JS -->
+        <!-- Progress -->
+        <div id="calc-progress" class="progress">
+          <div id="calc-progress-bar" class="progress-bar"></div>
         </div>
 
-        <button class="calc-btn" onclick="window.location.href='https://wa.me/34XXXXXXXXX'">Recibir exacto por WhatsApp</button>
-        <button class="calc-btn calc-btn-secondary" onclick="window.location.href='/contacto'">Llamarme ahora</button>
-    </div>
+        <!-- STEPS (tipo Netflix: full card each) -->
+        <!-- STEP 1 -->
+        <div class="step active" data-step="1">
+          <h2 class="step-title">¿Qué tipo de climatización necesitas?</h2>
+          <div class="options">
+            <button class="option-btn" data-value="split">Aire acondicionado Split</button>
+            <button class="option-btn" data-value="aerotermia">Aerotermia</button>
+            <button class="option-btn" data-value="conductos">Conductos</button>
+            <button class="option-btn" data-value="completa">Climatización completa</button>
+          </div>
+          <div class="nav-row">
+            <button class="btn-secondary btn-back" disabled>Atrás</button>
+            <button class="btn-next" disabled>Siguiente</button>
+          </div>
+        </div>
 
-</div>
+        <!-- STEP 2 -->
+        <div class="step" data-step="2">
+          <h2 class="step-title">¿Cuántos metros cuadrados tiene el espacio?</h2>
+          <div class="options">
+            <button class="option-btn" data-value="25">&lt; 25 m²</button>
+            <button class="option-btn" data-value="40">25–40 m²</button>
+            <button class="option-btn" data-value="60">40–60 m²</button>
+            <button class="option-btn" data-value="70">Más de 60 m²</button>
+          </div>
+          <div class="nav-row">
+            <button class="btn-secondary btn-back">Atrás</button>
+            <button class="btn-next" disabled>Siguiente</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step" data-step="3">
+          <h2 class="step-title">Nivel de calidad deseado</h2>
+          <div class="options">
+            <button class="option-btn" data-value="economico">💸 Económico</button>
+            <button class="option-btn" data-value="medio">⚖️ Calidad–precio</button>
+            <button class="option-btn" data-value="premium">⭐ Premium</button>
+          </div>
+          <div class="nav-row">
+            <button class="btn-secondary btn-back">Atrás</button>
+            <button class="btn-next" disabled>Siguiente</button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step" data-step="4">
+          <h2 class="step-title">¿Tienes preinstalación?</h2>
+          <div class="options">
+            <button class="option-btn" data-value="si">Sí</button>
+            <button class="option-btn" data-value="no">No</button>
+            <button class="option-btn" data-value="ns">No lo sé</button>
+          </div>
+          <div class="nav-row">
+            <button class="btn-secondary btn-back">Atrás</button>
+            <button class="btn-next" disabled>Siguiente</button>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step" data-step="5">
+          <h2 class="step-title">¿Quieres que el equipo tenga WiFi?</h2>
+          <div class="options">
+            <button class="option-btn" data-value="si">Sí</button>
+            <button class="option-btn" data-value="no">No</button>
+          </div>
+          <div class="nav-row">
+            <button class="btn-secondary btn-back">Atrás</button>
+            <button class="btn-next" disabled>Siguiente</button>
+          </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="step" data-step="6">
+          <h2 class="step-title">Dificultad de instalación</h2>
+          <div class="options">
+            <button class="option-btn" data-value="facil">Instalación fácil</button>
+            <button class="option-btn" data-value="media">Algo complicada</button>
+            <button class="option-btn" data-value="dificil">Muy complicada</button>
+          </div>
+          <div class="nav-row">
+            <button class="btn-secondary btn-back">Atrás</button>
+            <button class="btn-next" disabled>Ver recomendación</button>
+          </div>
+        </div>
+
+        <!-- STEP RESULT -->
+        <div class="step" data-step="7">
+          <div id="result-card" class="result-card">
+            <div class="result-left">
+              <div id="result-image" class="result-image">
+                <!-- imagen mockup premium via JS -->
+                <img src="" alt="Equipo recomendado">
+              </div>
+            </div>
+            <div class="result-right">
+              <h2 id="result-title">Recomendación</h2>
+              <div id="result-details" class="result-details">
+                <!-- rellenado por JS -->
+              </div>
+
+              <div class="result-cta">
+                <a id="wa-btn" class="btn-primary" target="_blank" href="#">📲 Recibir exacto por WhatsApp</a>
+                <a id="call-btn" class="btn-secondary" href="/contacto">📞 Llamarme ahora</a>
+                <button id="edit-answers" class="btn-link">✏️ Volver a cambiar respuestas</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guardar lead simple -->
+          <div class="lead-capture">
+            <h3>¿Quieres que te contactemos con un presupuesto cerrado?</h3>
+            <form id="lead-form">
+              <input type="text" id="lead-name" name="name" placeholder="Tu nombre" required>
+              <input type="tel" id="lead-phone" name="phone" placeholder="Teléfono (ej. 612345678)" required>
+              <input type="email" id="lead-email" name="email" placeholder="Correo (opcional)">
+              <button type="submit" class="btn-primary">Enviar mis datos (guardamos el lead)</button>
+              <p class="small">Al enviar, aceptas que nos pongamos en contacto. Datos usados solo para este fin.</p>
+            </form>
+            <div id="lead-feedback" class="lead-feedback" aria-live="polite"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="powered">Powered by INGNEXCLIMA</footer>
+  </main>
+
+</body>
+</html>
