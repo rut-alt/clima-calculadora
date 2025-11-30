@@ -1,263 +1,298 @@
-/* Reset suave */
-* { 
-  box-sizing: border-box; 
-}
-html, body { 
-  height: 100%; 
-  margin: 0; 
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; 
-  background: linear-gradient(180deg, #01184b 0%, #000a23 100%); 
-  color: #fff; 
+/* ===========================
+   RESET + BASE
+=========================== */
+* {
+  box-sizing: border-box;
 }
 
-/* HERO */
-.hero { 
-  padding: 36px 20px; 
-  text-align: center; 
-}
-.hero-inner { 
-  max-width: 980px; 
-  margin: 0 auto; 
-}
-.hero h1 { 
-  margin: 0; 
-  font-size: 1.9rem; 
-  letter-spacing: 0.2px; 
-  color: #fff; 
-}
-.hero .subtitle { 
-  margin-top: 8px; 
-  color: rgba(255,255,255,0.75); 
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: "Inter", system-ui, sans-serif;
+  background: #f5f6f8;
+  color: #01184b;
 }
 
-/* Calc wrapper */
-.calc-wrapper { 
-  display: flex; 
-  justify-content: center; 
-  padding: 30px 20px 80px; 
-}
-.calc { 
-  width: 100%; 
-  max-width: 920px; 
-}
-
-/* Progress bar */
-.progress { 
-  width: 100%; 
-  height: 10px; 
-  background: rgba(255,255,255,0.06); 
-  border-radius: 999px; 
-  overflow: hidden; 
-  margin-bottom: 20px; 
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); 
-}
-.progress-bar { 
-  width: 0%; 
-  height: 100%; 
-  background: linear-gradient(90deg, #01184b, #fb9206); 
-  transition: width .45s cubic-bezier(.2,.9,.3,1); 
+/* ===========================
+   HERO
+=========================== */
+.hero {
+  padding: 40px 20px;
+  text-align: center;
+  background: #01184b;
+  color: #fff;
 }
 
-/* Step card */
-.step { 
-  display: none; 
-  background: rgba(255,255,255,0.05); 
-  padding: 34px; 
-  border-radius: 16px; 
-  backdrop-filter: blur(6px); 
-  min-height: 260px; 
-  box-shadow: 0 8px 40px rgba(0,0,0,0.45); 
-  transform-origin: center; 
-}
-.step.active { 
-  display: block; 
-  animation: stepIn .45s ease; 
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-@keyframes stepIn { 
-  from { 
-    opacity: 0; 
-    transform: translateY(12px) scale(.98);
-  } 
-  to { 
-    opacity: 1; 
-    transform: translateY(0) scale(1);
-  } 
+.hero h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-.step-title { 
-  font-size: 1.6rem; 
-  margin: 0 0 18px; 
-  text-align: center; 
-  color: #fff; 
+.hero .subtitle {
+  opacity: 0.85;
+  margin-top: 6px;
+  font-size: 1rem;
 }
 
-/* Options grid */
-.options { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-  gap: 14px; 
-  margin-bottom: 18px; 
-}
-.option-btn { 
-  background: rgba(255,255,255,0.05); 
-  border: 1px solid rgba(255,255,255,0.12); 
-  color: #fff; 
-  padding: 18px; 
-  border-radius: 12px; 
-  cursor: pointer; 
-  font-size: 16px; 
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s; 
-  text-align: center; 
-}
-.option-btn:hover { 
-  transform: translateY(-6px); 
-  box-shadow: 0 18px 40px rgba(0,0,0,0.6); 
-  border-color: rgba(255,255,255,0.3); 
-}
-.option-btn.active { 
-  background: linear-gradient(180deg, #01184b, #fb9206); 
-  color: #fff; 
-  border: none; 
-  box-shadow: 0 12px 30px rgba(1,24,75,0.45); 
+/* ===========================
+   WRAPPER
+=========================== */
+.calc-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 80px;
 }
 
-/* Navigation buttons */
-.nav-row { 
-  display: flex; 
-  gap: 12px; 
-  justify-content: space-between; 
-  align-items: center; 
-  margin-top: 6px; 
-}
-.btn-next, .btn-primary { 
-  background: linear-gradient(90deg, #01184b, #fb9206); 
-  color: #fff; 
-  border: none; 
-  padding: 12px 18px; 
-  border-radius: 10px; 
-  cursor: pointer; 
-  font-weight: 600; 
-  box-shadow: 0 8px 30px rgba(0,0,0,0.45); 
-}
-.btn-next[disabled] { 
-  opacity: .5; 
-  cursor: not-allowed; 
-}
-.btn-secondary { 
-  background: transparent; 
-  color: rgba(255,255,255,0.9); 
-  border: 1px solid rgba(255,255,255,0.2); 
-  padding: 10px 14px; 
-  border-radius: 8px; 
-  cursor: pointer; 
+.calc {
+  width: 100%;
+  max-width: 900px;
 }
 
-/* Result card */
-.result-card { 
-  display: flex; 
-  gap: 24px; 
-  align-items: center; 
-  padding: 18px; 
-  border-radius: 12px; 
-  background: linear-gradient(180deg, #ffffff, #f5f5f5); 
-  color: #000; 
-  box-shadow: 0 20px 60px rgba(0,0,0,0.45); 
+/* ===========================
+   PROGRESS BAR
+=========================== */
+.progress {
+  width: 100%;
+  height: 8px;
+  background: #d9dce2;
+  border-radius: 4px;
+  margin-bottom: 24px;
 }
 
-/* Result left */
-.result-left { 
-  width: 45%; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-}
-.result-image { 
-  width: 100%; 
-  max-width: 360px; 
-  background: #fff; 
-  border-radius: 12px; 
-  padding: 18px; 
-  box-shadow: 0 18px 40px rgba(0,0,0,0.22); 
-}
-.result-image img { 
-  width: 100%; 
-  height: auto; 
-  border-radius: 8px; 
-  box-shadow: 0 22px 60px rgba(0,0,0,0.35); 
-  transform: translateY(-6px); 
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #fb9206;
+  border-radius: 4px;
+  transition: width .35s ease;
 }
 
-/* Result right */
-.result-right { 
-  width: 55%; 
+/* ===========================
+   CARD / STEP
+=========================== */
+.step {
+  display: none;
+  background: #fff;
+  border-radius: 14px;
+  padding: 34px;
+  border: 1px solid #e3e4e8;
 }
-.result-right h2 { 
-  margin: 0 0 8px; 
-  font-size: 1.4rem; 
-  color: #111; 
+
+.step.active {
+  display: block;
 }
-.result-details { 
-  padding: 6px 0; 
-  color: #333; 
+
+.step-title {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 22px;
+  color: #01184b;
+  font-weight: 600;
 }
-.result-details .line { 
-  margin-bottom: 8px; 
-  font-size: 1rem; 
+
+/* ===========================
+   OPTIONS
+=========================== */
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.option-btn {
+  padding: 18px;
+  text-align: center;
+  background: #f0f1f3;
+  border: 1px solid #cfd1d6;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #01184b;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.option-btn:hover {
+  background: #e7e9ec;
+}
+
+.option-btn.active {
+  background: #01184b;
+  color: #fff;
+  border-color: #01184b;
+}
+
+/* ===========================
+   NAV BUTTONS
+=========================== */
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.btn-secondary {
+  padding: 12px 16px;
+  background: #e3e4e8;
+  border: none;
+  border-radius: 8px;
+  color: #01184b;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #cfd1d6;
+}
+
+.btn-next {
+  padding: 12px 20px;
+  background: #fb9206;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-next:hover {
+  background: #e88305;
+}
+
+.btn-next[disabled] {
+  background: #ffcc8a;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   RESULT CARD
+=========================== */
+.result-card {
+  display: flex;
+  gap: 22px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #e3e4e8;
+}
+
+.result-left {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.result-image {
+  width: 100%;
+  max-width: 320px;
+  background: #f5f6f8;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #dcdfe4;
+}
+
+.result-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.result-right {
+  width: 60%;
+}
+
+.result-right h2 {
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.result-details {
+  color: #40444d;
+  margin-top: 10px;
+}
+
+.result-details .line {
+  margin-bottom: 8px;
 }
 
 /* CTA */
-.result-cta { 
-  margin-top: 14px; 
-  display: flex; 
-  gap: 12px; 
-  align-items: center; 
+.result-cta {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
 }
 
-/* Lead form */
-.lead-capture { 
-  margin-top: 18px; 
-  background: rgba(255,255,255,0.05); 
-  padding: 14px; 
-  border-radius: 10px; 
-  color: #fff; 
-}
-.lead-capture input { 
-  width: 100%; 
-  padding: 12px; 
-  border-radius: 8px; 
-  margin-bottom: 10px; 
-  border: 1px solid rgba(255,255,255,0.15); 
-  background: rgba(255,255,255,0.08); 
-  color: #fff; 
-}
-.lead-capture .small { 
-  font-size: 12px; 
-  color: rgba(255,255,255,0.55); 
-  margin-top: 8px; 
-}
-.lead-feedback { 
-  margin-top: 10px; 
-  color: #7af7a4; 
+.btn-contact {
+  background: #01184b;
+  color: #fff !important;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
 }
 
-/* Footer */
-.powered { 
-  text-align: center; 
-  color: rgba(255,255,255,0.5); 
-  padding: 40px 10px 80px; 
+.btn-contact:hover {
+  background: #fb9206;
 }
 
-/* Responsive */
-@media (max-width:900px) {
-  .result-card { flex-direction: column; }
-  .result-left, .result-right { width: 100%; }
-  .options { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+/* ===========================
+   LEAD FORM
+=========================== */
+.lead-capture {
+  margin-top: 22px;
+  background: #fff;
+  border: 1px solid #e3e4e8;
+  padding: 18px;
+  border-radius: 12px;
 }
 
-@media (max-width:420px) {
-  .hero h1 { font-size: 1.2rem; }
-  .step-title { font-size: 1.2rem; }
-  .option-btn { padding: 14px; font-size: 15px; }
+.lead-capture input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cfd1d6;
+  background: #f5f6f8;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #01184b;
 }
 
+.lead-capture button {
+  background: #fb9206;
+  border: none;
+  padding: 12px 18px;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.lead-feedback {
+  margin-top: 10px;
+  color: #2bbf62;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.powered {
+  text-align: center;
+  color: #40444d;
+  margin: 60px 0 20px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+  .result-card {
+    flex-direction: column;
+  }
+  .result-left, .result-right {
+    width: 100%;
+  }
+}
